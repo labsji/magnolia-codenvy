@@ -55,8 +55,7 @@ ENV NODE_VERSION=6.6.0 \
     NODE_PATH=/usr/local/lib/node_modules 
     
 RUN sudo apt-get update && \
-    sudo apt-get -y install build-essential libssl-dev libkrb5-dev gcc make ruby-full rubygems debian-keyring && \
-    sudo gem install sass compass && \
+    sudo apt-get -y install build-essential libssl-dev libkrb5-dev gcc make ruby-full  debian-keyring && \
     sudo apt-get clean && \
     sudo apt-get -y autoremove && \
     sudo apt-get -y clean && \
