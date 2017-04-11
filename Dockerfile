@@ -97,7 +97,7 @@ RUN sudo locale-gen en_US.UTF-8 && \
 WORKDIR /projects
 
 WORKDIR lightdev
-RUN mgnl customize-local-config && mgnl jumpstart && mgnl start
+RUN sudo mgnl customize-local-config && sudo mgnl jumpstart && sudo mgnl start
 
 CMD sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
