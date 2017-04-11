@@ -96,10 +96,5 @@ RUN sudo locale-gen en_US.UTF-8 && \
     sed -i 's/# store-plaintext-passwords = no/store-plaintext-passwords = yes/g' /home/user/.subversion/servers
 WORKDIR /projects
 
-WORKDIR lightdev
-RUN sudo mgnl customize-local-config && sudo mgnl jumpstart 
-
-WORKDIR /projects
-
 CMD sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
