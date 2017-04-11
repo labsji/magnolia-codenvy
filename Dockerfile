@@ -84,6 +84,9 @@ RUN cd /home/user && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NO
   && sudo rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
   && sudo ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
+# Setup mgnl CLI for Magnolia CMS light development
+RUN sudo npm install @magnolia/cli -g \
+   && npm update @magnolia/cli -g
 
 ENV LANG en_GB.UTF-8
 ENV LANG en_US.UTF-8
@@ -92,6 +95,8 @@ RUN sudo locale-gen en_US.UTF-8 && \
     sed -i 's/# store-passwords = no/store-passwords = yes/g' /home/user/.subversion/servers && \
     sed -i 's/# store-plaintext-passwords = no/store-plaintext-passwords = yes/g' /home/user/.subversion/servers
 WORKDIR /projects
+
+RUN cd /projects && mkdir lightdev && cd lightdev && mgnl customize-local-config && mgnl jumpstart && mgnl start
 
 CMD sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
