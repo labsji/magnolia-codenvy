@@ -6,7 +6,7 @@
 # Contributors:
 # Codenvy, S.A. - initial API and implementation
 
-FROM docker:1.12.0
+FROM alpine:3.4
 
 # Here we use several hacks collected from https://github.com/gliderlabs/docker-alpine/issues/11:
 # 1. install GLibc (which is not the cleanest solution at all)
