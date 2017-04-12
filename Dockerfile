@@ -91,5 +91,4 @@ ENV LANG en_US.UTF-8
 # RUN sudo locale-gen en_US.UTF-8 && \
 
 
-CMD sudo /usr/sbin/sshd -D && \
-    tail -f /dev/null
+CMD   tail -f /dev/null
