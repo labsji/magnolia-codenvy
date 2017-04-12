@@ -86,7 +86,7 @@ RUN sudo npm install @magnolia/cli -g \
 
 ENV LANG en_GB.UTF-8
 ENV LANG en_US.UTF-8
-RUN sudo locale-gen en_US.UTF-8 && \
+# RUN sudo locale-gen en_US.UTF-8 && \
 
 WORKDIR /projects
 
