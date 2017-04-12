@@ -93,6 +93,6 @@ WORKDIR /projects
 CMD sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
 
-    apk del curl glibc-i18n && \
+RUN apk del curl glibc-i18n && \
     rm -rf /opt/jdk/*src.zip \
            /tmp/* /var/cache/apk/* && \
