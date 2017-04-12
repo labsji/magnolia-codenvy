@@ -92,6 +92,3 @@ WORKDIR /projects
 
 CMD sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
-
-RUN     rm -rf /opt/jdk/*src.zip \
-           /tmp/* /var/cache/apk/* 
