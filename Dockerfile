@@ -24,7 +24,7 @@ ENV JAVA_VERSION_MAJOR=8 \
 
 # do all in one step
 RUN apk upgrade --update && \
-    apk add --update libstdc++ curl ca-certificates bash openssh sudo unzip openssl && \
+    apk add --update libstdc++ curl ca-certificates bash openssh sudo unzip openssl nodejs nodejs-npm && \
     for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do curl -sSL https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; done && \
     apk add --allow-untrusted /tmp/*.apk && \
     rm -v /tmp/*.apk && \
@@ -70,16 +70,15 @@ LABEL che:server:8080:ref=tomcat8 che:server:8080:protocol=http che:server:8000:
 
 ENV TERM xterm
 
-ENV NODE_VERSION=6.6.0 \
-    NODE_PATH=/usr/local/lib/node_modules 
+# ENV NODE_VERSION=6.6.0 \
+#    NODE_PATH=/usr/local/lib/node_modules 
     
 
-RUN cd /home/user && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
-  && sudo tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local  \
-  && sudo rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
-  && sudo ln -s /usr/local/bin/node /usr/local/bin/nodejs
+#RUN cd /home/user && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
+#  && sudo tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local  \
+#  && sudo rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
+#  && sudo ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-RUN sudo apk add --update nodejs nodejs-npm && npm install npm@latest -g
 
 # Setup mgnl CLI for Magnolia CMS light development
 RUN sudo npm install @magnolia/cli -g \
