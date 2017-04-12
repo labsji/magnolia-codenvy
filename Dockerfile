@@ -84,11 +84,12 @@ ENV TERM xterm
 RUN sudo npm install @magnolia/cli -g \
    && npm update @magnolia/cli -g
 
+WORKDIR /projects
+
 ENV LANG en_GB.UTF-8
 ENV LANG en_US.UTF-8
 # RUN sudo locale-gen en_US.UTF-8 && \
 
-WORKDIR /projects
 
 #CMD sudo /usr/sbin/sshd -D && \
 #    tail -f /dev/null
