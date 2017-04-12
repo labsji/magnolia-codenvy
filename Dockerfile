@@ -79,7 +79,7 @@ RUN cd /home/user && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NO
   && sudo rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
   && sudo ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-RUN apk add --update nodejs nodejs-npm && npm install npm@latest -g
+RUN sudo apk add --update nodejs nodejs-npm && npm install npm@latest -g
 
 # Setup mgnl CLI for Magnolia CMS light development
 RUN sudo npm install @magnolia/cli -g \
