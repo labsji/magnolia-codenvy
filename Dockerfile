@@ -75,7 +75,7 @@ ENV NODE_VERSION=6.6.0 \
     
 
 RUN cd /home/user && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
-  && sudo tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
+  && sudo tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local  \
   && sudo rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
   && sudo ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
@@ -86,9 +86,7 @@ RUN sudo npm install @magnolia/cli -g \
 ENV LANG en_GB.UTF-8
 ENV LANG en_US.UTF-8
 RUN sudo locale-gen en_US.UTF-8 && \
-    svn --version && \
-    sed -i 's/# store-passwords = no/store-passwords = yes/g' /home/user/.subversion/servers && \
-    sed -i 's/# store-plaintext-passwords = no/store-plaintext-passwords = yes/g' /home/user/.subversion/servers
+
 WORKDIR /projects
 
 CMD sudo /usr/sbin/sshd -D && \
